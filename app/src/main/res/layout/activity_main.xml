@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context="com.drextended.finalbreaksbinding.MainActivity">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.drextended.finalbreaksbinding.ViewModel"/>
+    </data>
+
+    <LinearLayout
+        android:id="@+id/activity_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.SwitchCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Set final variable"
+            app:setOnCheckedChangeListener="@{(v, checked) -> viewModel.setFinalVar(checked)}"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:setText='@{"finalVar = " + viewModel.finalVar}'
+            tools:text="finalVar = "
+            />
+
+        <android.support.v7.widget.SwitchCompat
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Set non final variable"
+            app:setOnCheckedChangeListener="@{(v, checked) -> viewModel.setNonFinalVar(checked)}"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text='@{"nonFinalVar = " + viewModel.nonFinalVar}'
+            tools:text="nonFinalVar = "
+            />
+    </LinearLayout>
+
+</layout>
